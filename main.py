@@ -42,7 +42,7 @@ def getServices():
     if service is not None:
       data = {
         'name': serviceName,
-        'displayText': service.displayText,
+        'displayName': service.displayName,
         'loaded': data[1].decode('utf-8'),
         'active': data[2].decode('utf-8'),
         'sub': data[3].decode('utf-8')
