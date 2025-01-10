@@ -1,0 +1,2 @@
+paho_mqtt==1.6.1
+schedule==1.2.2
