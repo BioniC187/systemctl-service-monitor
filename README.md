@@ -15,7 +15,7 @@ cd /home/systemctl-monitor
 
 download the code
 ```
-wget https://github.com/BioniC187/systemctl-service-monitor/archive/refs/heads/feature/main.zip
+wget https://github.com/BioniC187/systemctl-service-monitor/archive/refs/heads/main.zip
 ```
 
 extract the code

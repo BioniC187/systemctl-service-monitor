@@ -11,7 +11,7 @@ defaultConfig = config['DEFAULT']
 
 servicesToCheck = {}
 
-if defaultConfig['servicesFile'] is not None:
+if 'servicesFile' in defaultConfig:
   with open(defaultConfig['servicesFile']) as file:
      for line in file:
        line = line.rstrip()
