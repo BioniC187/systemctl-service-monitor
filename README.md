@@ -3,7 +3,25 @@ Used to get the status of defined systemctl services and publish to a mqtt topic
 
 ## get the repo
 Download the repo into /home/systemctl-monitor
+```
+mkdir /home/systemctl-monitor
+```
 If you want to use a different directory, you will have to update the service file and the commands listed here to have the new path.
+
+Go into the directory
+```
+cd /home/systemctl-monitor
+```
+
+download the code
+```
+wget https://github.com/BioniC187/systemctl-service-monitor/archive/refs/heads/feature/main.zip
+```
+
+extract the code
+```
+unzip -j main.zip
+```
 
 ## Install dependencies
 ```

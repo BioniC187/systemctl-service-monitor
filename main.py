@@ -1,6 +1,6 @@
 import subprocess
 from mqttService import MqttService
-from models.service import Service
+from serviceModel import Service
 import configparser
 import schedule
 import time
