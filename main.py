@@ -29,17 +29,21 @@ def getServices():
   output = proc.stdout.read()
   lines = output.splitlines()
 
-  services = []
-  servicesDict = {}
   payload = {}
-  payload['data'] = []
+  payload['items'] = []
   payload['deviceName'] = defaultConfig['deviceNameDisplayText']
+  payload['count'] = 0
+  payload['countRunning'] = 0
+  payload['countDead'] = 0
+  payload['countFailed'] = 0
 
   for line in lines:
     data = line.split()
     serviceName = data[0].decode('utf-8')
-    service = servicesToCheck[serviceName]
-    if service is not None:
+    
+    if serviceName in servicesToCheck:
+      service = servicesToCheck[serviceName]
+      payload['count'] += 1
       data = {
         'name': serviceName,
         'displayName': service.displayName,
@@ -47,9 +51,13 @@ def getServices():
         'active': data[2].decode('utf-8'),
         'sub': data[3].decode('utf-8')
       }
-      services.append(data)
-      payload['data'].append(data)
-      servicesDict[serviceName] = data
+      payload['items'].append(data)
+      if data['sub'] == 'running':
+        payload['countRunning'] += 1
+      elif data['sub'] == 'dead':
+        payload['countDead'] += 1
+      elif data['sub'] == 'failed':
+        payload['countFailed'] += 1
   mqttService.publish(payload)  # data attribute
 mqttService = MqttService(defaultConfig)
 mqttService.start()
